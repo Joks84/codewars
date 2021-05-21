@@ -21,3 +21,21 @@ def open_or_senior(data):
     print(["Senior" if list[0] >= 55 and list[1] > 7 else "Open" for list in data])
 
 open_or_senior([[53, 23],[64, 1],[51, 23],[72, 8],[66, 22],[10, 24]])
+
+
+# This time no story, no theory. The examples below show you how to write function accum:
+# EXAMPLES:
+# accum("abcd") -> "A-Bb-Ccc-Dddd"
+# accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+# accum("cwAt") -> "C-Ww-Aaa-Tttt"
+# The parameter of accum is a string which includes only letters from a..z and A..Z.
+
+def accum(word):
+    result = ""
+    for index, letter in enumerate(word, start=1):
+        result += (letter*index).capitalize() + "-"
+    print(result.strip("-"))
+
+accum('abcd')
+accum('RqaEzty')
+accum('cwAt')
