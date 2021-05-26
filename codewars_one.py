@@ -117,3 +117,52 @@ def array_diff(a, b):
 array_diff([1, 2], [1])
 array_diff([1, 2, 2, 2, 3], [2])
 array_diff([1, 2, 2], [1])
+
+
+# This time we want to write calculations using functions and get the results. Let's have a look at some examples:
+#
+# seven(times(five())) # must return 35
+# four(plus(nine())) # must return 13
+# eight(minus(three())) # must return 5
+# six(divided_by(two())) # must return 3
+# Requirements:
+#
+# There must be a function for each number from 0 ("zero") to 9 ("nine")
+# There must be a function for each of the following mathematical operations:
+# plus, minus, times, dividedBy (divided_by in Ruby and Python)
+# Each calculation consist of exactly one operation and two numbers
+# The most outer function represents the left operand, the most inner function represents the right operand
+# Division should be integer division. For example, this should return 2, not 2.666666...:
+# eight(divided_by(three()))
+import math
+
+
+def my_function(number, func = None):
+    if func:
+        return func(number)
+    else:
+        return number
+
+# Numbers
+def zero(func=None): return my_function(0, func)
+def one(func=None): return my_function(1, func)
+def two(func=None): return my_function(2, func)
+def three(func=None): return my_function(3, func)
+def four(func=None): return my_function(4, func)
+def five(func=None): return my_function(5, func)
+def six(func=None): return my_function(6, func)
+def seven(func=None): return my_function(7, func)
+def eight(func=None): return my_function(8, func)
+def nine(func=None): return my_function(9, func)
+
+# Calculations
+def times(x): return lambda y: y * x
+def divided_by(x): return lambda y: math.floor(y/x)
+def plus(x): return lambda y: y + x
+def minus(x): return lambda y: y - x
+
+print(seven(times(five())))
+print(seven(times(five())))
+print(four(plus(nine())))
+print(eight(minus(three())))
+print(six(divided_by(two())))
